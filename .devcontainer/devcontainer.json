@@ -1,0 +1,53 @@
+{
+    "name": "redis-cpp-client-devcontainer-podman",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "capAdd": ["SYS_PTRACE"],
+    "securityOpt": ["seccomp=unconfined"],
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "false",
+            "installOhMyZsh": "false",
+            "installOhMyZshConfig": "false",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "dockerDashComposeVersion": "v2"
+        },
+        "ghcr.io/devcontainers/features/node:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vsliveshare.vsliveshare",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "ms-vscode.cmake-tools",
+                "streetsidesoftware.code-spell-checker",
+                "ms-azuretools.vscode-docker",
+                "ms-vscode.makefile-tools",
+                "yzhang.markdown-all-in-one",
+                "ms-python.python",
+                "pflannery.vscode-versionlens",
+                "timonwong.shellcheck",
+                "mitaki28.vscode-clang",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "redhat.vscode-yaml",
+                "ritwickdey.LiveServer",
+                "donjayamanne.githistory",
+                "mhutchie.git-graph",
+                "github.vscode-github-actions"
+            ]
+        }
+    },
+    "postCreateCommand": "npm install -g @devcontainers/cli",
+    "runArgs": ["--userns=keep-id"],
+    "containerEnv": {
+        "HOME": "/home/vscode"
+    },
+    "remoteUser": "vscode"
+}
